@@ -1,0 +1,17 @@
+# Vizion Trak — publish the website only.
+# Root-level files (.belt, *.md, *.html, crawl_results, screenshots, etc.)
+# are local design/planning tooling and should NOT be committed.
+
+# 1) Ignore all root-level content by default
+/*
+
+# 2) Re-include the website folder (and only it)
+!/demo/
+!/demo/**
+
+# 3) Keep this file itself tracked
+!.gitignore
+
+# 4) Editor / OS noise (defensive)
+.DS_Store
+Thumbs.db
