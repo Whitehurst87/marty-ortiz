@@ -9,8 +9,10 @@
 !/demo/
 !/demo/**
 
-# 3) Keep this file itself tracked
+# 3) Keep this file + the GitHub Actions workflows tracked
 !.gitignore
+!/.github/
+!/.github/**
 
 # 4) Editor / OS noise (defensive)
 .DS_Store
