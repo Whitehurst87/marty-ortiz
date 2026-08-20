@@ -414,6 +414,30 @@ p { margin-bottom: 1rem; font-size: 1.05rem; color: var(--text-main); }
 .hero .lead { font-size: 1.15rem; }
 .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 1.8rem; }
 
+/* Hero variants — same overlay treatment, swapped backgrounds */
+.hero.hero--coaching {
+    background-image: url('../images/coaching-hero-bg.jpg');
+    background-position: center 42%;
+}
+.hero.hero--resources {
+    background-image: url('../images/resources-bg-image.jpg');
+    background-position: center 42%;
+}
+
+/* All heroes share one desktop height — homepage, coaching, and resources match exactly */
+@media (min-width: 769px) {
+    .hero,
+    .hero.hero--coaching,
+    .hero.hero--resources {
+        min-height: 1000px;
+    }
+    .hero.hero--coaching,
+    .hero.hero--resources {
+        display: flex;
+        align-items: center;
+    }
+}
+
 /* ---------- Footer ---------- */
 .site-footer { background-color: var(--brand-charcoal); color: rgba(255, 255, 255, 0.75); }
 .footer-grid {
