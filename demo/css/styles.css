@@ -25,7 +25,7 @@
     --text-main: var(--brand-charcoal);
     --text-light: #55606a;
     --bg-white: #ffffff;
-    --bg-offwhite: #f6f8fa;
+    --bg-offwhite: #F9FAFB;
     --bg-light: #edf3f8;
 
     /* Typography */
@@ -34,9 +34,9 @@
     --font-accent: 'Allura', 'Brush Script MT', cursive;
 
     /* Layout & effects */
-    --container: 1140px;
+    --container: 1368px;
     --radius: 14px;
-    --shadow-sm: 0 2px 10px rgba(41, 82, 102, 0.08);
+    --shadow-sm: 0 10px 25px -5px rgba(41, 82, 102, 0.08);
     --shadow-md: 0 12px 32px rgba(41, 82, 102, 0.14);
     --transition: all 0.25s ease;
 }
@@ -71,7 +71,7 @@
     }
 
     /* Shared Element Morph Transitions */
-    .hero-portrait, .portrait-card {
+    .hero-portrait, .hero-photo, .portrait-card {
         view-transition-name: marty-portrait;
     }
 
@@ -109,7 +109,7 @@ html { scroll-behavior: smooth; }
 
 body {
     font-family: var(--font-body);
-    font-weight: 300;
+    font-weight: 400;
     color: var(--text-main);
     line-height: 1.6;
     background-color: var(--bg-white);
@@ -127,7 +127,8 @@ h1, h2, h3, h4 {
     font-family: var(--font-heading);
     font-weight: 700;
     color: var(--primary-dark);
-    line-height: 1.2;
+    line-height: 1.35;
+    letter-spacing: 0.02em;
     margin-bottom: 1rem;
 }
 h1 { font-size: 3rem; }
@@ -135,12 +136,13 @@ h2 { font-size: 2.4rem; }
 h3 { font-size: 1.5rem; }
 h4 { font-size: 1.15rem; }
 
-p { margin-bottom: 1rem; font-size: 1.05rem; color: var(--text-light); }
+p { margin-bottom: 1rem; font-size: 1.05rem; color: var(--text-main); }
 
 .accent-script {
     font-family: var(--font-accent);
-    color: var(--primary);
+    color: var(--accent-teal);
     font-weight: 400;
+    font-size: 1.6rem;
 }
 
 .eyebrow {
@@ -203,12 +205,12 @@ p { margin-bottom: 1rem; font-size: 1.05rem; color: var(--text-light); }
     box-shadow: 0 8px 20px rgba(239, 77, 77, 0.35);
 }
 
-.btn-secondary { background-color: var(--primary); color: #ffffff; }
+.btn-secondary { background-color: var(--accent-teal); color: #ffffff; }
 .btn-secondary:hover {
-    background-color: #2d608a;
+    background-color: var(--primary-dark);
     color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(58, 122, 172, 0.35);
+    box-shadow: 0 8px 20px rgba(33, 131, 128, 0.35);
 }
 
 .btn-ghost { background-color: transparent; color: #ffffff; border-color: rgba(255, 255, 255, 0.7); }
@@ -231,7 +233,7 @@ p { margin-bottom: 1rem; font-size: 1.05rem; color: var(--text-light); }
     border-radius: var(--radius);
     box-shadow: var(--shadow-sm);
     padding: 32px 28px;
-    border: 1px solid rgba(93, 154, 201, 0.15);
+    border: 1px solid rgba(33, 131, 128, 0.18);
     transition: var(--transition);
 }
 .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
@@ -243,7 +245,7 @@ p { margin-bottom: 1rem; font-size: 1.05rem; color: var(--text-light); }
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--primary), var(--accent-teal));
+    background: var(--accent-teal);
     margin-bottom: 1.2rem;
     color: #ffffff;
 }
@@ -263,9 +265,23 @@ p { margin-bottom: 1rem; font-size: 1.05rem; color: var(--text-light); }
     min-height: 160px;
     overflow: hidden;
     border-radius: var(--radius) var(--radius) 0 0;
-    background: linear-gradient(135deg, var(--primary), var(--accent-teal));
+    background: linear-gradient(135deg, var(--accent-teal), var(--primary-dark));
 }
 .card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Flat card variant — no box chrome; imagery + text float on tinted bg */
+.card--flat {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+.card--flat:hover { transform: none; box-shadow: none; }
+.card--flat .card-media {
+    margin: 0 0 24px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
 
 .card h3 { margin-bottom: 0.6rem; }
 .card p { font-size: 0.98rem; }
@@ -280,7 +296,7 @@ p { margin-bottom: 1rem; font-size: 1.05rem; color: var(--text-light); }
 
 
 /* ---------- Eyebrow variant on dark backgrounds ---------- */
-.eyebrow-light { color: #9fc6e8; }
+.eyebrow-light { color: #9fc7c2; }
 
 /* ---------- Header / Navigation ---------- */
 .site-header {
@@ -374,23 +390,25 @@ p { margin-bottom: 1rem; font-size: 1.05rem; color: var(--text-light); }
 
 /* ---------- Hero ---------- */
 .hero {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    background-image: url('../images/iStock-2278855256.jpg');
+    background-size: cover;
+    background-position: center 62%;
+    background-repeat: no-repeat;
+    background-color: var(--brand-dark-navy);
     color: #ffffff;
-    padding: 96px 0;
+    padding: 128px 0;
     position: relative;
     overflow: hidden;
 }
-.hero::after {
+.hero::before {
     content: '';
     position: absolute;
-    right: -120px;
-    top: -120px;
-    width: 420px;
-    height: 420px;
-    border-radius: 50%;
-    background: rgba(58, 122, 172, 0.25);
+    inset: 0;
+    /* Stronger navy on the left (over the text), lighter over Marty on the right */
+    background: linear-gradient(105deg, rgba(41, 82, 102, 0.88) 0%, rgba(41, 82, 102, 0.78) 45%, rgba(41, 82, 102, 0.45) 70%, rgba(41, 82, 102, 0.18) 100%);
+    pointer-events: none;
 }
-.hero-inner { position: relative; z-index: 1; max-width: 720px; }
+.hero-inner { position: relative; z-index: 1; }
 .hero h1 { color: #ffffff; margin-bottom: 1.2rem; }
 .hero p { color: rgba(255, 255, 255, 0.88); }
 .hero .lead { font-size: 1.15rem; }
@@ -533,7 +551,7 @@ textarea.form-control { resize: vertical; min-height: 120px; }
     .nav-toggle { display: flex; }
     .btn-nav { display: none; }
 
-    .hero { padding: 72px 0; }
+    .hero { padding: 88px 0; }
     .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; gap: 28px; padding: 48px 0 32px; }
 }
@@ -546,13 +564,75 @@ textarea.form-control { resize: vertical; min-height: 120px; }
 /* ---------- Hero grid + portrait ---------- */
 .hero-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 48px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "inner photo"
+        "trust trust";
+    gap: 56px;
     align-items: center;
     position: relative;
     z-index: 1;
 }
-.hero-portrait { max-width: 380px; justify-self: center; position: relative; }
+.hero-inner { grid-area: inner; }
+.hero-photo { grid-area: photo; }
+.hero-trust { grid-area: trust; }
+
+/* Trust signals inside the hero — dark translucent panel so they read clearly over the busy bg image */
+.hero-trust {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: 22px 26px;
+    background: rgba(41, 82, 102, 0.86);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.28);
+    text-align: center;
+}
+.hero-trust .trust-item .trust-value {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.hero-trust .trust-item .trust-label {
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+/* Hero photo (right column) — framed, true <img> so the person is never cropped */
+.hero-photo {
+    max-width: 460px;
+    justify-self: end;
+    position: relative;
+}
+.hero-photo::before {
+    content: '';
+    position: absolute;
+    inset: 16px -16px -16px 16px;
+    border: 3px solid rgba(255, 255, 255, 0.25);
+    border-radius: 22px;
+    z-index: 0;
+}
+.hero-photo .portrait-frame {
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.35);
+    position: relative;
+    z-index: 1;
+}
+.hero-photo .portrait-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 50% 20%;
+}
 .hero-portrait::before {
     content: '';
     position: absolute;
@@ -570,10 +650,23 @@ textarea.form-control { resize: vertical; min-height: 120px; }
 }
 .portrait-frame svg, .portrait-frame img { display: block; width: 100%; height: auto; }
 
+/* Wide photo variant — full-bleed (non-transparent) hero photo */
+.hero-portrait--wide { max-width: 500px; }
+.hero-portrait--wide::before {
+    inset: 14px -14px -14px 14px;
+    border-radius: 16px;
+}
+.portrait-frame--photo { border-radius: 16px; }
+.portrait-frame--photo img {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: 35% 45%;
+}
+
 /* ---------- Trust strip ---------- */
 .trust-strip {
-    background-color: var(--bg-light);
-    border-bottom: 1px solid rgba(93, 154, 201, 0.2);
+    background-color: #F9FAFB;
+    border-bottom: 1px solid rgba(33, 131, 128, 0.15);
 }
 .trust-strip-inner {
     display: grid;
@@ -692,7 +785,7 @@ textarea.form-control { resize: vertical; min-height: 120px; }
 
 /* ---------- Guide banner (lead magnet) ---------- */
 .guide-banner {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    background: var(--primary-dark);
     color: #ffffff;
 }
 .guide-grid {
@@ -769,8 +862,10 @@ textarea.form-control { resize: vertical; min-height: 120px; }
 
 /* ---------- Responsive (Chunk 1) ---------- */
 @media (max-width: 900px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-    .hero-portrait { max-width: 300px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; grid-template-areas: "inner" "photo" "trust"; }
+    .hero-photo { max-width: 100%; justify-self: center; }
+    .hero-photo::before { inset: 12px -10px -12px 12px; }
+    .hero-trust { grid-template-columns: repeat(2, 1fr); gap: 18px 20px; padding: 20px 18px; }
     .split { grid-template-columns: 1fr; gap: 36px; }
 }
 
@@ -783,8 +878,14 @@ textarea.form-control { resize: vertical; min-height: 120px; }
 .bg-light { background-color: var(--bg-light); }
 .bg-offwhite { background-color: var(--bg-offwhite); }
 .bg-teal {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    background-color: var(--brand-deep-teal);
+    background-color: var(--primary-dark);
+    background-image: linear-gradient(
+        rgba(41, 82, 102, 0.74),
+        rgba(41, 82, 102, 0.74)
+    ), url('../images/teal-texture-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #ffffff;
 }
 .bg-teal h1, .bg-teal h2, .bg-teal h3, .bg-teal h4 { color: #ffffff; }
