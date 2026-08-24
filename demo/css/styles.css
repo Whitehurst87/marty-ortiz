@@ -144,6 +144,8 @@ p { margin-bottom: 1rem; font-size: 1.05rem; color: var(--text-main); }
     font-weight: 400;
     font-size: 1.6rem;
 }
+/* Teal script is illegible over the navy hero overlay — switch to white inside heroes */
+.hero .accent-script { color: #ffffff; }
 
 .eyebrow {
     display: inline-block;
@@ -436,16 +438,34 @@ p { margin-bottom: 1rem; font-size: 1.05rem; color: var(--text-main); }
     background-image: url('../images/resources-bg-image.jpg');
     background-position: center 42%;
 }
+.hero.hero--courses {
+    background-image: url('../images/woman-studying.jpg');
+    background-position: left 30%;
+}
+.hero.hero--blog {
+    background-image: url('../images/blog-hero.jpg');
+    background-position: center 42%;
+}
+.hero.hero--about {
+    background-image: url('../images/about-page-hero.webp');
+    background-position: right 30%;
+}
 
 /* All heroes share one desktop height — homepage, coaching, and resources match exactly */
 @media (min-width: 769px) {
     .hero,
     .hero.hero--coaching,
-    .hero.hero--resources {
+    .hero.hero--resources,
+    .hero.hero--courses,
+    .hero.hero--blog,
+    .hero.hero--about {
         min-height: 1000px;
     }
     .hero.hero--coaching,
-    .hero.hero--resources {
+    .hero.hero--resources,
+    .hero.hero--courses,
+    .hero.hero--blog,
+    .hero.hero--about {
         display: flex;
         align-items: center;
     }
