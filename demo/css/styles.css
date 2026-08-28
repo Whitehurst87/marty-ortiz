@@ -986,11 +986,17 @@ textarea.form-control { resize: vertical; min-height: 120px; }
     margin-top: 1.2rem;
 }
 
-/* ---------- Newsletter signup (homepage, above final CTA) ---------- */
+/* ---------- Newsletter signup (homepage final CTA) ---------- */
 #newsletter { scroll-margin-top: 90px; }
 .newsletter-banner p { max-width: 560px; margin-left: auto; margin-right: auto; }
 .newsletter-form { max-width: 480px; margin: 1.4rem auto 0; }
-.newsletter-banner .form-success { max-width: 480px; margin: 1.2rem auto 0; }
+.newsletter-banner .form-success {
+    max-width: 480px;
+    margin: 1.2rem auto 0;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+}
 .form-control.form-error {
     border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(239, 77, 77, 0.2);
